@@ -1,4 +1,6 @@
+"use client";
 import "./globals.css";
+import { useEffect } from "react";
 
 export const metadata = {
   title: "Create Next App",

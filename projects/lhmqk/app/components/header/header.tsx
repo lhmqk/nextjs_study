@@ -14,7 +14,7 @@ export default function Header() {
         <ul
           className={`flex text-zinc-400 sm:flex-row flex-col items-end sm:inline-flex ${
             isHeader
-              ? "h-[0] overflow-hidden sm:static absolute sm:w-fit w-full sm:bg-none sm:text-base text-[0px] sm:text-zinc-200 text-transparent"
+              ? "h-[0rem] overflow-hidden sm:static absolute sm:w-fit w-full sm:bg-none sm:text-base text-[0px] sm:text-zinc-200 text-transparent"
               : "absolute"
           } sm:right-6 w-full right-0 sm:top-6 top-[4.5rem] sm:pr-4 pr-6 sm:bg-transparent sm:h-auto h-[calc(100vh-4.5rem)] transition-all duration-1000 ease-in-out `}
         >

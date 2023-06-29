@@ -1,32 +1,52 @@
 "use client";
 import "./section_about.scss";
 import { useState } from "react";
+import { useInView } from "react-intersection-observer";
 export default function Section_About() {
   const [isDetails, setIsDetails] = useState(true);
+  const [ref, inView] = useInView({
+    threshold: 0,
+    triggerOnce: false,
+  });
   return (
     <div
       id="section_about"
-      className="snap-center p-8 h-[100vh] text-zinc-200 overflow-y-hidden"
+      className="snap-center p-8 h-[100vh] text-zinc-200 overflow-hidden"
     >
       <div className="h-[2rem] "></div>
       <hr />
       <div
         className={`${
-          isDetails ? "" : "h-[0] overflow-hidden opacity-0"
+          isDetails ? "" : "h-[0rem] overflow-hidden opacity-0"
         } transition-all duration-1000 ease-in-out h-[calc(100%-4rem)] flex lg:flex-row flex-col`}
       >
         <div className="flex flex-col lg:h-full h-auto justify-between">
           <div>
-            <p className="lg:py-8 md:py-16 py-4 lg:mt-0 md:mt-16 mt-0">
+            <p
+              ref={ref}
+              className={` ${
+                inView ? "fade-in-up visible" : ""
+              } lg:py-8 md:py-16 py-4 mt-0`}
+            >
               About me
             </p>
-            <p className="font-bold md:text-5xl text-xl md:max-w-[45rem] max-w-full">
+            <p
+              ref={ref}
+              className={` ${
+                inView ? "fade-in-up visible" : ""
+              } font-bold md:text-5xl text-xl md:max-w-[45rem] max-w-full`}
+            >
               Hey, I'm John. I'm a Computer Engineering student at HCMUT
               <br />
               where my team develops Artificial Intelligence of Things systems.
             </p>
           </div>
-          <p className="lg:py-8 md:py-16 py-4 max-w-[45rem]">
+          <p
+            ref={ref}
+            className={` ${
+              inView ? "fade-in-up visible" : ""
+            } md:py-8 py-4 max-w-[45rem]`}
+          >
             I am a full-stack developer who has worked on a variety of AIoT
             projects, both leading and supporting other team members. I have
             experience in most aspects of web development, including front-end,
@@ -38,9 +58,12 @@ export default function Section_About() {
         </div>
         <div className="lg:w-[calc(100%-45rem)] w-full flex lg:flex-col justify-between items-end md:ml-0 ml-auto sm:mt-0 mt-auto">
           <img
+            ref={ref}
+            className={` ${
+              inView ? "fade-in-right visible" : ""
+            } lg:w-2/3 w-1/3 opacity-75 filter grayscale-[50%] rounded-full lg:mt-24 sm:mb-0 mb-8`}
             src="/images/avatar.jpg"
             alt="lhmqk avatar"
-            className="lg:w-2/3 w-1/3 opacity-75 filter grayscale-[50%] rounded-full lg:mt-24 sm:mb-0 mb-8"
           />
           <button
             className="relative two max-w-fit mb-3 text-lg font-bold underline cursor-pointer"
@@ -52,6 +75,7 @@ export default function Section_About() {
           </button>
         </div>
       </div>
+      <hr />
       <div
         className={`${
           isDetails ? "h-[0px] overflow-hidden opacity-0" : ""
@@ -63,16 +87,51 @@ export default function Section_About() {
           </p>
           <p className="py-4">
             I am a{" "}
-            <a href="/" className="underline font-bold">
+            <a
+              href="https://en.wikipedia.org/wiki/Computer_engineering"
+              className="underline font-bold"
+            >
               third-year Computer Engineering student
             </a>{" "}
-            at <a>Ho Chi Minh City University of Technology (HCMUT)</a>, where I
-            lead the Artificial Intelligence of Things (AIoT) team. I am
-            responsible for developing and implementing manufacturable AIoT
-            solutions for the Vietnamese market. My research interests include
-            machine learning, deep learning, and embedded systems. I am
-            passionate about using technology to solve real-world problems and
-            make a positive impact on society.
+            at{" "}
+            <a
+              href="https://en.wikipedia.org/wiki/Ho_Chi_Minh_City_University_of_Technology"
+              className="underline font-bold"
+            >
+              Ho Chi Minh City University of Technology (HCMUT)
+            </a>
+            , where I lead the{" "}
+            <a
+              href="https://en.wikipedia.org/wiki/Artificial_intelligence_of_things"
+              className="underline font-bold"
+            >
+              Artificial Intelligence of Things
+            </a>{" "}
+            (AIoT) team. I am responsible for developing and implementing
+            manufacturable AIoT solutions for the Vietnamese market. My research
+            interests include{" "}
+            <a
+              href="https://en.wikipedia.org/wiki/Machine_learning"
+              className="underline font-bold"
+            >
+              machine learning
+            </a>
+            ,{" "}
+            <a
+              href="https://en.wikipedia.org/wiki/Deep_learning"
+              className="underline font-bold"
+            >
+              deep learning
+            </a>
+            , and{" "}
+            <a
+              href="https://en.wikipedia.org/wiki/Embedded_system"
+              className="underline font-bold"
+            >
+              embedded systems
+            </a>
+            . I am passionate about using technology to solve real-world
+            problems and make a positive impact on society.
           </p>
           <hr />
           <p className="pt-4">
@@ -83,12 +142,85 @@ export default function Section_About() {
             experiences.
           </p>
           <p className="pt-4">
-            I am responsible for the development and deployment of web
-            applications, on-premise or cloud databases, and servers. I am
-            proficient in a variety of technologies, including MERN, MEAN,
-            Django, .NET, JAMStack, and Google Cloud. I am constantly learning
-            new technologies and techniques, and I am always looking for ways to
-            improve my skills.
+            I am responsible for the development and deployment of{" "}
+            <a
+              href="https://en.wikipedia.org/wiki/Web_application"
+              className="underline font-bold"
+            >
+              web applications
+            </a>
+            , aon-premise or cloud{" "}
+            <a
+              href="https://en.wikipedia.org/wiki/Database"
+              className="underline font-bold"
+            >
+              databases
+            </a>
+            , and{" "}
+            <a
+              href="https://en.wikipedia.org/wiki/Server_(computing)"
+              className="underline font-bold"
+            >
+              servers
+            </a>
+            . I am proficient in a variety of technologies, including{" "}
+            <a
+              href="https://en.wikipedia.org/wiki/MERN_(solution_stack)"
+              className="underline font-bold"
+            >
+              MERN
+            </a>
+            ,{" "}
+            <a
+              href="https://en.wikipedia.org/wiki/MEAN_(solution_stack)"
+              className="underline font-bold"
+            >
+              MEAN
+            </a>
+            ,{" "}
+            <a
+              href="https://en.wikipedia.org/wiki/Next.js"
+              className="underline font-bold"
+            >
+              Nextjs
+            </a>
+            ,{" "}
+            <a
+              href="https://en.wikipedia.org/wiki/Flask_(web_framework)"
+              className="underline font-bold"
+            >
+              Flask
+            </a>
+            ,{" "}
+            <a
+              href="https://en.wikipedia.org/wiki/Django_(web_framework)"
+              className="underline font-bold"
+            >
+              Django
+            </a>
+            ,{" "}
+            <a
+              href="https://en.wikipedia.org/wiki/.NET"
+              className="underline font-bold"
+            >
+              .NET
+            </a>
+            ,{" "}
+            <a
+              href="https://en.wikipedia.org/wiki/Jamstack"
+              className="underline font-bold"
+            >
+              JAMStack
+            </a>
+            , and{" "}
+            <a
+              href="https://en.wikipedia.org/wiki/Google_Cloud_Platform"
+              className="underline font-bold"
+            >
+              Google Cloud Platform
+            </a>
+            . I am constantly learning new technologies and techniques, and I am
+            always looking for ways to improve my skills.
           </p>
           <p className="pt-4">
             In addition to my work in artificial intelligence of things (AIoT),

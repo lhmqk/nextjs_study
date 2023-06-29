@@ -7,7 +7,7 @@ export default function Item() {
     <div className="snap-y snap-mandatory h-screen w-screen overflow-y-scroll">
       <Section_Introduction></Section_Introduction>
       <Section_About></Section_About>
-      {/* <Section_Services></Section_Services> */}
+      <Section_Services></Section_Services>
     </div>
   );
 }

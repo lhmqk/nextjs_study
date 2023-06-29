@@ -1,27 +1,47 @@
+"use client";
+import React from "react";
 import Header from "../../header/header";
 import "./section_introduction.scss";
+import { useInView } from "react-intersection-observer";
 
 export default function Section_Introduction() {
+  const [ref, inView] = useInView({
+    threshold: 0,
+    triggerOnce: false,
+  });
   return (
     <div
       id="section_introduction"
-      className="snap-center p-8 h-[100vh] bg-zinc-900 text-zinc-200"
+      className="snap-center p-8 h-[100vh] bg-zinc-900 text-zinc-200 overflow-hidden"
     >
       <Header></Header>
       <hr />
       <div className="h-[calc(100%-4rem)] flex lg:flex-row flex-col">
         <div className="flex flex-col lg:h-full h-auto justify-between">
           <div>
-            <p className="lg:py-8 md:py-16 py-4 lg:mt-0 md:mt-16 mt-0">
-              Enactment of your remedy
-            </p>
-            <p className="font-bold md:text-5xl text-3xl max-w-[45rem]">
+            <div ref={ref} className={` ${inView ? "fade-in-up visible" : ""}`}>
+              <p className="lg:py-8 md:py-16 py-4 mt-0">
+                Enactment of your remedy
+              </p>
+            </div>
+
+            <p
+              ref={ref}
+              className={` ${
+                inView ? "fade-in-up visible" : ""
+              } font-bold md:text-5xl text-3xl max-w-[45rem]`}
+            >
               Technology's dance, crafting your dreams,
               <br />
               Enchanting solutions, in digital streams.
             </p>
           </div>
-          <p className="lg:py-8 md:py-16 py-4 max-w-[25rem]">
+          <p
+            ref={ref}
+            className={` ${
+              inView ? "fade-in-up visible" : ""
+            } lg:py-8 md:py-16 py-4 max-w-[25rem]`}
+          >
             Dream weaver, code sculptor, their skills entwined,
             <br />A Fullstack Web Developer, seeking worlds to find.
             <br />
@@ -31,7 +51,11 @@ export default function Section_Introduction() {
           </p>
         </div>
         <div className="lg:w-[calc(100%-45rem)] md:w-[calc(100%-25rem)] w-[calc(100%-10em)] flex flex-col justify-end lg:ml-0 ml-auto">
-          <div id="container" className="m-[0]">
+          <div
+            ref={ref}
+            className={` ${inView ? "fade-in-right visible" : ""} m-[0]`}
+            id="container"
+          >
             <div id="circle" className="relative w-full overflow-hidden">
               <svg
                 version="1.1"
