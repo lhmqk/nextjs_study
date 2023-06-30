@@ -31,7 +31,7 @@ export default function Section_Introduction() {
                 inView ? "fade-in-up visible" : ""
               } font-bold md:text-5xl text-3xl max-w-[45rem]`}
             >
-              Technology's dance, crafting your dreams,
+              Technology&apos;s dance, crafting your dreams,
               <br />
               Enchanting solutions, in digital streams.
             </p>

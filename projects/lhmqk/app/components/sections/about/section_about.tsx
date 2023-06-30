@@ -2,6 +2,7 @@
 import "./section_about.scss";
 import { useState } from "react";
 import { useInView } from "react-intersection-observer";
+import Image from "next/image";
 export default function Section_About() {
   const [isDetails, setIsDetails] = useState(true);
   const [ref, inView] = useInView({
@@ -17,8 +18,8 @@ export default function Section_About() {
       <hr />
       <div
         className={`${
-          isDetails ? "" : "h-[0rem] overflow-hidden opacity-0"
-        } transition-all duration-1000 ease-in-out h-[calc(100%-4rem)] flex lg:flex-row flex-col`}
+          isDetails ? "h-[calc(100%-4rem)]" : " overflow-hidden opacity-0"
+        } transition-all duration-1000 ease-in-out h-[0px] flex lg:flex-row flex-col`}
       >
         <div className="flex flex-col lg:h-full h-auto justify-between">
           <div>
@@ -36,7 +37,8 @@ export default function Section_About() {
                 inView ? "fade-in-up visible" : ""
               } font-bold md:text-5xl text-xl md:max-w-[45rem] max-w-full`}
             >
-              Hey, I'm John. I'm a Computer Engineering student at HCMUT
+              Hey, I&apos;m John. I&apos;m a Computer Engineering student at
+              HCMUT
               <br />
               where my team develops Artificial Intelligence of Things systems.
             </p>
@@ -56,14 +58,17 @@ export default function Section_About() {
             environment.
           </p>
         </div>
-        <div className="lg:w-[calc(100%-45rem)] w-full flex lg:flex-col justify-between items-end md:ml-0 ml-auto sm:mt-0 mt-auto">
-          <img
+
+        <div className="lg:w-[calc(100%-45rem)] w-full flex lg:flex-col justify-between items-end md:ml-0 ml-auto mt-0">
+          <Image
             ref={ref}
             className={` ${
               inView ? "fade-in-right visible" : ""
             } lg:w-2/3 w-1/3 opacity-75 filter grayscale-[50%] rounded-full lg:mt-24 sm:mb-0 mb-8`}
             src="/images/avatar.jpg"
             alt="lhmqk avatar"
+            width={384}
+            height={384}
           />
           <button
             className="relative two max-w-fit mb-3 text-lg font-bold underline cursor-pointer"
@@ -75,15 +80,15 @@ export default function Section_About() {
           </button>
         </div>
       </div>
-      <hr />
+
       <div
         className={`${
-          isDetails ? "h-[0px] overflow-hidden opacity-0" : ""
-        }  transition-all duration-500 ease-in-out h-[calc(100%-4rem)] flex lg:flex-row flex-col`}
+          isDetails ? "overflow-hidden opacity-0" : "h-[calc(100%-4rem)]"
+        } h-0 transition-all duration-500 ease-in-out  flex lg:flex-row flex-col`}
       >
         <div className="leading-7 sm:max-h-none max-h-[42rem] sm:overflow-y-hidden overflow-y-scroll">
           <p className="text-lg font-bold pt-4">
-            Hey, I'm John. Most folks know me as lhmqk online.
+            Hey, I&apos;m John. Most folks know me as lhmqk online.
           </p>
           <p className="py-4">
             I am a{" "}

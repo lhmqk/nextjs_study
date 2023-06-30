@@ -1,8 +1,34 @@
 "use client";
 import "./header.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 export default function Header() {
   const [isHeader, setIsHeader] = useState(true);
+  const [viewportSize, setViewportSize] = useState("");
+
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      if (width < 640) {
+        setViewportSize("Mobile");
+      } else if (width < 1024) {
+        setViewportSize("Tablet");
+      } else {
+        setViewportSize("Desktop");
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+  const handleClick = () => {
+    if (viewportSize === "Mobile") {
+      setIsHeader(!isHeader);
+    }
+  };
   return (
     <div className="flex w-full justify-between">
       <div>
@@ -14,33 +40,49 @@ export default function Header() {
         <ul
           className={`flex text-zinc-400 sm:flex-row flex-col items-end sm:inline-flex ${
             isHeader
-              ? "h-[0rem] overflow-hidden sm:static absolute sm:w-fit w-full sm:bg-none sm:text-base text-[0px] sm:text-zinc-200 text-transparent"
-              : "absolute"
-          } sm:right-6 w-full right-0 sm:top-6 top-[4.5rem] sm:pr-4 pr-6 sm:bg-transparent sm:h-auto h-[calc(100vh-4.5rem)] transition-all duration-1000 ease-in-out `}
+              ? " overflow-hidden sm:static absolute sm:w-fit w-full sm:bg-none sm:text-base text-[0px] sm:text-zinc-200 text-transparent"
+              : "absolute h-[calc(100vh-4.5rem)]"
+          } h-0 sm:right-6 w-full right-0 sm:top-6 top-[4.5rem] sm:pr-4 pr-6 sm:bg-transparent sm:h-auto  transition-all duration-1000 ease-in-out `}
         >
           <li className="p-2 ml-2 font-bold hover:text-zinc-200 uppercase ">
-            <a className="relative two" href="/">
+            <a
+              onClick={handleClick}
+              className="relative two"
+              href="#section_introduction"
+            >
               <span>Home</span>
               <span className="absolute -bottom-3 left-1/2 w-0 transition-all h-1 bg-zinc-200"></span>
               <span className="absolute -bottom-3 right-1/2 w-0 transition-all h-1 bg-zinc-200"></span>
             </a>
           </li>
           <li className="p-2 ml-2 font-bold hover:text-zinc-200 uppercase">
-            <a className="relative two" href="/">
+            <a
+              onClick={handleClick}
+              className="relative two"
+              href="#section_about"
+            >
               <span>About</span>
               <span className="absolute -bottom-3 left-1/2 w-0 transition-all h-1 bg-zinc-200"></span>
               <span className="absolute -bottom-3 right-1/2 w-0 transition-all h-1 bg-zinc-200"></span>
             </a>
           </li>
           <li className="p-2 ml-2 font-bold hover:text-zinc-200 uppercase">
-            <a className="relative two" href="/">
+            <a
+              onClick={handleClick}
+              className="relative two"
+              href="#section_services"
+            >
               <span>Services</span>
               <span className="absolute -bottom-3 left-1/2 w-0 transition-all h-1 bg-zinc-200"></span>
               <span className="absolute -bottom-3 right-1/2 w-0 transition-all h-1 bg-zinc-200"></span>
             </a>
           </li>
           <li className="p-2 ml-2 font-bold hover:text-zinc-200 uppercase">
-            <a className="relative two" href="/">
+            <a
+              onClick={handleClick}
+              className="relative two"
+              href="#section_projects"
+            >
               <span>Projects</span>
               <span className="absolute -bottom-3 left-1/2 w-0 transition-all h-1 bg-zinc-200"></span>
               <span className="absolute -bottom-3 right-1/2 w-0 transition-all h-1 bg-zinc-200"></span>
@@ -48,9 +90,9 @@ export default function Header() {
           </li>
         </ul>
         <button
-          type="button"
           className="p-2 text-gray-500 rounded-lg md:hidden"
-          onClick={() => setIsHeader(!isHeader)}
+          title="Toggle menu"
+          onClick={handleClick}
         >
           <svg
             className="w-6 h-6"
